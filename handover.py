@@ -9,6 +9,7 @@ import time
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+from mitosheet.streamlit.v1 import spreadsheet
 
 
 st.set_page_config(page_title='SWAST - Handover Delays',  layout='wide', page_icon=':ambulance:')
@@ -156,6 +157,11 @@ with st.spinner('Updating Report...'):
        
 with st.spinner('Report updated!'):
     time.sleep(1)     
+
+# Show users raw data so they can explore 
+st.markdown("Explore underlying data")
+raw_data = pd.read_excel('DataforMock.xlsx',sheet_name = 'Raw Data')  
+spreadsheet(raw_data)
     
 # Performance Section  
     
